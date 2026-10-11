@@ -4,10 +4,8 @@ import { SOCIAL_LINKS } from "../consts";
 ---
 
 <BaseLayout title="About" description="About Your Name.">
-  <h1 class="font-mono text-3xl font-bold sm:text-4xl">
-    <span class="text-accent">&gt;</span> About
-  </h1>
-  <div class="mt-8 space-y-4 text-zinc-300">
+  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">About</h1>
+  <div class="mt-8 space-y-4 text-slate-700">
     <p>
       Hi, I'm Your Name. This is a placeholder bio: replace it with a short
       introduction about who you are and what you do.
@@ -17,14 +15,14 @@ import { SOCIAL_LINKS } from "../consts";
       writing about, and what you're interested in right now.
     </p>
   </div>
-  <h2 class="mt-10 font-mono text-xl font-bold">Contact</h2>
+  <h2 class="mt-10 text-xl font-bold tracking-tight text-ink">Contact</h2>
   <ul class="mt-4 space-y-2">
     {SOCIAL_LINKS.map(({ label, href }) => (
       <li>
         <a
           href={href}
           rel={href.startsWith("http") ? "me noopener" : undefined}
-          class="font-mono text-accent hover:underline"
+          class="font-medium text-accent hover:underline"
         >
           {label}
         </a>

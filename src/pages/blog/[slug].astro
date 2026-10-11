@@ -23,10 +23,10 @@ const { Content } = await render(post);
 >
   <article>
     <header>
-      <h1 class="font-mono text-3xl font-bold sm:text-4xl">
+      <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
         {post.data.title}
       </h1>
-      <p class="mt-2 font-mono text-sm text-zinc-400">
+      <p class="mt-2 font-mono text-sm text-slate-500">
         <time datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
@@ -34,7 +34,7 @@ const { Content } = await render(post);
       </p>
       <TagList tags={post.data.tags} />
     </header>
-    <div class="prose mt-8 max-w-none prose-invert prose-headings:font-mono">
+    <div class="prose mt-8 max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-ink">
       <Content />
     </div>
   </article>

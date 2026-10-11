@@ -21,8 +21,8 @@ const { posts } = Astro.props;
   title={`Posts tagged "${tag}"`}
   description={`Posts tagged ${tag}.`}
 >
-  <h1 class="font-mono text-3xl font-bold sm:text-4xl">
-    <span class="text-accent">&gt;</span> #{tag}
+  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+    Tagged: {tag}
   </h1>
   <div class="mt-8">
     <PostList posts={posts} />

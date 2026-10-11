@@ -8,23 +8,22 @@ const recent = (await getPublishedPosts()).slice(0, 5);
 ---
 
 <BaseLayout>
-  <h1 class="font-mono text-3xl font-bold sm:text-4xl">
-    <span class="text-accent">&gt;</span>
+  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
     {SITE_TITLE}
   </h1>
-  <p class="mt-4 text-lg text-zinc-300">
+  <p class="mt-4 text-lg text-slate-700">
     I build things for the web and write about what I learn along the way.
   </p>
   <section class="mt-12" aria-labelledby="recent-posts">
-    <h2 id="recent-posts" class="font-mono text-xl font-bold">
-      <span class="text-accent">#</span> Recent posts
+    <h2 id="recent-posts" class="text-xl font-bold tracking-tight text-ink">
+      Recent posts
     </h2>
     <div class="mt-6">
       <PostList posts={recent} />
     </div>
     <a
       href="/blog/"
-      class="mt-8 inline-block font-mono text-accent hover:underline"
+      class="mt-8 inline-block font-medium text-accent hover:underline"
     >
       All posts →
     </a>

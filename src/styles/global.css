@@ -2,9 +2,14 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-accent: #4ade80;
+  --color-accent: #2563eb;
+  --color-ink: #0f172a;
+  --color-dusk-900: #0b1e46;
+  --color-dusk-700: #1d4ed8;
+  --color-dusk-400: #60a5fa;
+  --color-dusk-100: #dbeafe;
 }
 
 .prose {
-  --tw-prose-invert-links: var(--color-accent);
+  --tw-prose-links: var(--color-accent);
 }

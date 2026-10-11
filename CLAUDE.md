@@ -40,7 +40,7 @@ Pages in scope: Home, About, Blog index, Post, Tag pages, RSS. Nothing else (no 
 
 ## Design
 
-Dark background, light text, monospace accents (headings/code/meta), one accent color. Minimal; no animation libraries.
+Light page (white), navy ink text, one blue accent (#2563eb). Home hero is a dusk-blue sky with layered SVG mountains. Sans headings; monospace only for meta (dates, tags, reading time). Motion is CSS-only (keyframes, scroll-driven animations), no animation libraries, and all of it is disabled under prefers-reduced-motion.
 
 ## Rules
 
