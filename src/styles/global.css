@@ -1,5 +1,10 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-accent: #4ade80;
+}
+
+.prose {
+  --tw-prose-invert-links: var(--color-accent);
 }
