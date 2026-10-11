@@ -43,22 +43,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </a>
     <header class="border-b border-slate-200">
       <div class="mx-auto flex max-w-2xl items-center justify-between gap-4 px-4 py-4">
-        <a
-          href="/"
-          class="font-semibold text-ink hover:text-accent hover:underline"
-        >
+        <a href="/" class="font-semibold text-ink hover:text-accent link-sweep">
           ~/{SITE_TITLE.toLowerCase().replaceAll(" ", "-")}
         </a>
         <nav aria-label="Main" class="flex gap-4">
           <a
             href="/blog/"
-            class="font-semibold text-slate-600 hover:text-accent hover:underline"
+            class="font-semibold text-slate-600 hover:text-accent link-sweep"
           >
             Blog
           </a>
           <a
             href="/about/"
-            class="font-semibold text-slate-600 hover:text-accent hover:underline"
+            class="font-semibold text-slate-600 hover:text-accent link-sweep"
           >
             About
           </a>
