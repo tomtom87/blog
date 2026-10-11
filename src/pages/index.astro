@@ -9,6 +9,25 @@ const recent = (await getPublishedPosts()).slice(0, 5);
 
 <BaseLayout>
   <Hero slot="hero" />
+  <section id="intro" aria-labelledby="intro-heading">
+    <h2 id="intro-heading" class="text-xl font-bold tracking-tight text-ink">
+      What I do
+    </h2>
+    <p class="mt-4 text-lg text-slate-700">
+      I run a small studio that helps brands plan, design and build fast,
+      thoughtful websites — from Shopify storefronts to content sites like this
+      one. Replace this with a few lines about who you help and how.
+    </p>
+    <h3 class="mt-8 text-base font-bold tracking-tight text-ink">Currently</h3>
+    <dl class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-[auto_1fr]">
+      <dt class="font-mono text-sm text-accent">building</dt>
+      <dd class="text-slate-700">A client storefront on Shopify</dd>
+      <dt class="font-mono text-sm text-accent">learning</dt>
+      <dd class="text-slate-700">Astro and CSS scroll-driven animations</dd>
+      <dt class="font-mono text-sm text-accent">reading</dt>
+      <dd class="text-slate-700">A book you'd recommend</dd>
+    </dl>
+  </section>
   <section class="mt-12" aria-labelledby="recent-posts">
     <h2 id="recent-posts" class="text-xl font-bold tracking-tight text-ink">
       Recent posts
