@@ -1,19 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 import PostList from "../components/PostList.astro";
-import { SITE_TITLE } from "../consts";
 import { getPublishedPosts } from "../lib/posts";
 
 const recent = (await getPublishedPosts()).slice(0, 5);
 ---
 
 <BaseLayout>
-  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-    {SITE_TITLE}
-  </h1>
-  <p class="mt-4 text-lg text-slate-700">
-    I build things for the web and write about what I learn along the way.
-  </p>
+  <Hero slot="hero" />
   <section class="mt-12" aria-labelledby="recent-posts">
     <h2 id="recent-posts" class="text-xl font-bold tracking-tight text-ink">
       Recent posts

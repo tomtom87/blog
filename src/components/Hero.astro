@@ -1,0 +1,406 @@
+---
+import { SITE_TITLE } from "../consts";
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="hero relative isolate min-h-[80svh] overflow-hidden"
+>
+  <!-- Sky -->
+  <div class="layer sky-move" aria-hidden="true">
+    <div class="layer sky">
+      <svg class="stars" viewBox="0 0 100 40" preserveAspectRatio="none">
+        <g fill="#fff">
+          <circle cx="8" cy="6" r="0.18" opacity="0.9" />
+          <circle cx="19" cy="14" r="0.12" opacity="0.6" />
+          <circle cx="31" cy="4" r="0.15" opacity="0.8" />
+          <circle cx="44" cy="11" r="0.1" opacity="0.5" />
+          <circle cx="57" cy="5" r="0.2" opacity="0.9" />
+          <circle cx="68" cy="15" r="0.12" opacity="0.6" />
+          <circle cx="79" cy="7" r="0.16" opacity="0.8" />
+          <circle cx="90" cy="12" r="0.14" opacity="0.7" />
+          <circle cx="95" cy="3" r="0.12" opacity="0.6" />
+        </g>
+      </svg>
+      <div class="sun"></div>
+    </div>
+  </div>
+
+  <!-- Floating shapes -->
+  <div class="layer shapes-move" aria-hidden="true">
+    <div class="layer shapes">
+      <svg
+        class="shape s1"
+        viewBox="0 0 100 100"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+      >
+        <polygon points="50,8 94,88 6,88" />
+      </svg>
+      <svg
+        class="shape s2"
+        viewBox="0 0 100 100"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+      >
+        <circle cx="50" cy="50" r="44" />
+      </svg>
+      <svg
+        class="shape s3"
+        viewBox="0 0 100 100"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+      >
+        <polygon points="50,4 96,50 50,96 4,50" />
+      </svg>
+      <svg
+        class="shape s4"
+        viewBox="0 0 100 100"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+      >
+        <polygon points="50,10 92,84 8,84" />
+      </svg>
+      <svg
+        class="shape s5"
+        viewBox="0 0 100 100"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+      >
+        <circle cx="50" cy="50" r="40" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Ridges -->
+  <div class="layer ridge-move far-move" aria-hidden="true">
+    <div class="ridge far">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad-far" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#bfdbfe" />
+            <stop offset="1" stop-color="#93c5fd" />
+          </linearGradient>
+        </defs>
+        <polygon
+          fill="url(#grad-far)"
+          points="0,320 0,170 120,110 240,160 380,60 520,140 640,90 780,150 920,50 1080,130 1200,80 1320,140 1440,100 1440,320"
+        />
+        <g fill="#fff" opacity="0.22">
+          <polygon points="380,60 330,150 440,150" />
+          <polygon points="920,50 860,140 990,140" />
+          <polygon points="640,90 600,135 700,135" />
+          <polygon points="1200,80 1150,125 1260,125" />
+          <polygon points="120,110 80,150 170,150" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="layer ridge-move mid-move" aria-hidden="true">
+    <div class="ridge mid">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad-mid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#60a5fa" />
+            <stop offset="1" stop-color="#3b82f6" />
+          </linearGradient>
+        </defs>
+        <polygon
+          fill="url(#grad-mid)"
+          points="0,320 0,220 100,170 220,230 360,150 480,210 600,140 740,220 880,160 1020,230 1160,150 1300,210 1440,170 1440,320"
+        />
+        <g fill="#fff" opacity="0.16">
+          <polygon points="360,150 310,225 420,225" />
+          <polygon points="600,140 550,215 660,215" />
+          <polygon points="1160,150 1110,225 1220,225" />
+          <polygon points="880,160 840,220 930,220" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="layer ridge-move near-move" aria-hidden="true">
+    <div class="ridge near">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad-near" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d4ed8" />
+            <stop offset="1" stop-color="#ffffff" />
+          </linearGradient>
+        </defs>
+        <polygon
+          fill="url(#grad-near)"
+          points="0,320 0,260 90,220 200,270 330,215 450,275 590,230 720,280 860,225 990,285 1130,235 1270,280 1440,240 1440,320"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="layer title-move">
+    <div class="title relative z-10 mx-auto flex max-w-3xl flex-col items-center px-4 pt-[10svh] text-center text-white">
+      <h1
+        id="hero-title"
+        class="font-mono text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+      >
+        {SITE_TITLE}
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-blue-100 sm:text-xl">
+        Helping brands build fast, thoughtful websites. Replace this line with
+        your own.
+      </p>
+      <a
+        href="#intro"
+        class="mt-8 inline-flex flex-col items-center gap-1 font-mono text-sm text-blue-100 hover:text-white hover:underline"
+      >
+        Scroll
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5v14M6 13l6 6 6-6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .layer {
+    position: absolute;
+    inset: 0;
+  }
+  .title-move {
+    z-index: 10;
+  }
+  .sky {
+    background: linear-gradient(
+      to bottom,
+      var(--color-dusk-900) 0%,
+      var(--color-dusk-700) 55%,
+      var(--color-dusk-400) 80%,
+      var(--color-dusk-100) 100%
+    );
+  }
+  /* extends the sky upward so parallax never exposes a gap above it */
+  .sky-move::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 50vh;
+    background: var(--color-dusk-900);
+  }
+  .stars {
+    position: absolute;
+    inset: 0 0 50% 0;
+    width: 100%;
+    height: 50%;
+  }
+  .sun {
+    position: absolute;
+    left: 50%;
+    bottom: 12%;
+    width: min(40vw, 260px);
+    aspect-ratio: 1;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      #fff 0%,
+      #eff6ff 22%,
+      rgb(219 234 254 / 0.55) 40%,
+      rgb(147 197 253 / 0.2) 62%,
+      transparent 72%
+    );
+  }
+  .shape {
+    position: absolute;
+    opacity: 0.22;
+    animation: float var(--d, 28s) ease-in-out var(--delay, 0s) infinite
+      alternate;
+  }
+  .s1 {
+    top: 12%;
+    left: 8%;
+    width: 64px;
+    --d: 26s;
+  }
+  .s2 {
+    top: 20%;
+    right: 10%;
+    width: 90px;
+    --d: 34s;
+    --delay: -6s;
+    opacity: 0.18;
+  }
+  .s3 {
+    top: 46%;
+    left: 16%;
+    width: 48px;
+    --d: 22s;
+    --delay: -3s;
+    opacity: 0.28;
+  }
+  .s4 {
+    top: 8%;
+    right: 30%;
+    width: 44px;
+    --d: 38s;
+    --delay: -12s;
+    opacity: 0.2;
+  }
+  .s5 {
+    top: 40%;
+    right: 18%;
+    width: 56px;
+    --d: 30s;
+    --delay: -9s;
+    opacity: 0.16;
+  }
+
+  .ridge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 0;
+  }
+  .ridge svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .far {
+    height: clamp(220px, 34vw, 480px);
+  }
+  .mid {
+    height: clamp(180px, 26vw, 380px);
+  }
+  .near {
+    height: clamp(140px, 19vw, 280px);
+  }
+
+  @keyframes float {
+    from {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    to {
+      transform: translate(14px, -26px) rotate(40deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .far {
+      animation: rise 900ms ease-out 0ms both;
+    }
+    .mid {
+      animation: rise 900ms ease-out 150ms both;
+    }
+    .near {
+      animation: rise 900ms ease-out 300ms both;
+    }
+    .title {
+      animation: fade-up 900ms ease-out 500ms both;
+    }
+
+    @supports (animation-timeline: scroll()) {
+      @keyframes p-sky {
+        to {
+          transform: translateY(40vh);
+        }
+      }
+      @keyframes p-shapes {
+        to {
+          transform: translateY(30vh);
+        }
+      }
+      @keyframes p-far {
+        to {
+          transform: translateY(25vh);
+        }
+      }
+      @keyframes p-mid {
+        to {
+          transform: translateY(15vh);
+        }
+      }
+      @keyframes p-near {
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes p-title {
+        to {
+          transform: translateY(35vh);
+          opacity: 0;
+        }
+      }
+      .sky-move,
+      .shapes-move,
+      .far-move,
+      .mid-move,
+      .near-move,
+      .title-move {
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: scroll(root);
+        animation-range: 0 100vh;
+      }
+      .sky-move {
+        animation-name: p-sky;
+      }
+      .shapes-move {
+        animation-name: p-shapes;
+      }
+      .far-move {
+        animation-name: p-far;
+      }
+      .mid-move {
+        animation-name: p-mid;
+      }
+      .near-move {
+        animation-name: p-near;
+      }
+      .title-move {
+        animation-name: p-title;
+      }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shape {
+      animation: none;
+    }
+  }
+</style>
