@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<BaseLayout>
+  <h1 class="font-mono text-3xl font-bold sm:text-4xl">
+    <span class="text-accent">&gt;</span>
+    {SITE_TITLE}
+  </h1>
+  <p class="mt-4 text-lg text-zinc-300">
+    I build things for the web and write about what I learn along the way.
+  </p>
+</BaseLayout>
