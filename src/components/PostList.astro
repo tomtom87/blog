@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import TagList from "./TagList.astro";
 import { formatDate } from "../lib/date";
 
 interface Props {
@@ -23,7 +24,8 @@ const { posts } = Astro.props;
           {formatDate(post.data.date)}
         </time>
       </p>
-      <p class="mt-1 text-zinc-300">{post.data.description}</p>
+      <TagList tags={post.data.tags} />
+      <p class="mt-2 text-zinc-300">{post.data.description}</p>
     </li>
   ))}
 </ul>

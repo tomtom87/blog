@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPublishedPosts } from "../../lib/posts";
+import TagList from "../../components/TagList.astro";
 import { formatDate } from "../../lib/date";
 
 export const getStaticPaths = (async () => {
@@ -25,6 +26,7 @@ const { Content } = await render(post);
           {formatDate(post.data.date)}
         </time>
       </p>
+      <TagList tags={post.data.tags} />
     </header>
     <div class="prose mt-8 max-w-none prose-invert prose-headings:font-mono">
       <Content />
