@@ -40,7 +40,7 @@ Pages in scope: Home, About, Blog index, Post, Tag pages, RSS. Nothing else (no 
 
 ## Design
 
-Light page (white), navy ink text, one blue accent (#2563eb). Home hero is a dusk-blue sky with layered SVG mountains. Sans headings; monospace only for meta (dates, tags, reading time). Motion is CSS-only (keyframes, scroll-driven animations), no animation libraries, and all of it is disabled under prefers-reduced-motion.
+Light page (white), navy ink text, one blue accent (#2563eb). Home hero is a full-screen blue-hour mountain photo (parallax) with the header laid over it. Fonts are self-hosted Google Fonts via Astro's Fonts API (`astro.config.mjs`): Fraunces for headings, Inter for body, JetBrains Mono only for meta (dates, tags, reading time). Photos live in `src/assets/`, rendered with `astro:assets` `<Image>`; CC-licensed photos need a credit on the page that uses them. Motion is CSS-only (keyframes, scroll-driven animations), no animation libraries, and all of it is disabled under prefers-reduced-motion.
 
 ## Rules
 
@@ -48,7 +48,7 @@ Light page (white), navy ink text, one blue accent (#2563eb). Home hero is a dus
 - Drafts (`draft: true`) never appear on blog index, home, tag pages, post routes, or RSS. Filter through one shared helper in `src/lib/`; never filter inline.
 - Every new piece of logic (sorting, filtering, slugs, reading time, RSS items) gets a Vitest test in the same change.
 - Minimal dependencies. Prefer Astro built-ins (content collections, `astro:assets`, `@astrojs/rss`). Ask before adding any package.
-- Semantic, accessible HTML: landmarks, one `h1` per page, alt text, visible focus, sufficient contrast on dark bg.
+- Semantic, accessible HTML: landmarks, one `h1` per page, alt text, visible focus, sufficient contrast (including text over photos).
 - Mobile-first Tailwind: base styles for small screens, `sm:`/`md:` to scale up.
 - Never read, create, or edit `.env*` files.
 

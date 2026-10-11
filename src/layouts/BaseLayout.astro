@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import "../styles/global.css";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
@@ -11,6 +12,8 @@ interface Props {
 const { title, description = SITE_DESCRIPTION, type = "website" } = Astro.props;
 const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Pages with a full-bleed hero get a transparent header laid over it.
+const overHero = Astro.slots.has("hero");
 ---
 
 <html lang="en">
@@ -32,30 +35,50 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE_TITLE} />
     <meta name="twitter:card" content="summary" />
+    <Font cssVariable="--font-fraunces" preload />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-jetbrains" />
     <title>{pageTitle}</title>
   </head>
-  <body class="flex min-h-screen flex-col bg-white text-ink antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-accent">
+  <body class="relative flex min-h-screen flex-col bg-white text-ink antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-accent">
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:text-accent focus:ring-2 focus:ring-accent"
     >
       Skip to content
     </a>
-    <header class="border-b border-slate-200">
-      <div class="mx-auto flex max-w-2xl items-center justify-between gap-4 px-4 py-4">
-        <a href="/" class="font-semibold text-ink hover:text-accent link-sweep">
-          ~/{SITE_TITLE.toLowerCase().replaceAll(" ", "-")}
+    <header
+      class:list={[
+        overHero
+          ? "absolute inset-x-0 top-0 z-20 text-white"
+          : "border-b border-slate-200 text-ink",
+      ]}
+    >
+      <div
+        class:list={[
+          "mx-auto flex items-center justify-between gap-4 px-4 py-5",
+          overHero ? "max-w-5xl sm:px-8" : "max-w-2xl",
+        ]}
+      >
+        <a href="/" class="link-sweep font-serif text-xl font-semibold">
+          {SITE_TITLE}
         </a>
-        <nav aria-label="Main" class="flex gap-4">
+        <nav aria-label="Main" class="flex gap-5">
           <a
             href="/blog/"
-            class="font-semibold text-slate-600 hover:text-accent link-sweep"
+            class:list={[
+              "link-sweep font-medium",
+              overHero ? "text-blue-50" : "text-slate-600 hover:text-accent",
+            ]}
           >
             Blog
           </a>
           <a
             href="/about/"
-            class="font-semibold text-slate-600 hover:text-accent link-sweep"
+            class:list={[
+              "link-sweep font-medium",
+              overHero ? "text-blue-50" : "text-slate-600 hover:text-accent",
+            ]}
           >
             About
           </a>

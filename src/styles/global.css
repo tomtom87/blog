@@ -10,8 +10,26 @@
   --color-dusk-100: #dbeafe;
 }
 
+/* Self-hosted Google Fonts from astro.config.mjs */
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-jetbrains);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+}
+
 .prose {
   --tw-prose-links: var(--color-accent);
+  --tw-prose-headings: var(--color-ink);
 }
 
 .link-sweep {

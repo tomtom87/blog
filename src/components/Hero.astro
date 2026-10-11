@@ -1,176 +1,72 @@
 ---
+import { Image } from "astro:assets";
 import { SITE_TITLE } from "../consts";
+import heroPhoto from "../assets/hero-lake-geneva.jpg";
 ---
 
 <section
   aria-labelledby="hero-title"
-  class="hero relative isolate min-h-[80svh] overflow-hidden"
+  class="hero relative isolate flex min-h-svh overflow-hidden bg-dusk-900"
 >
-  <!-- Sky -->
-  <div class="layer sky-move" aria-hidden="true">
-    <div class="layer sky">
-      <svg class="stars" viewBox="0 0 100 40" preserveAspectRatio="none">
-        <g fill="#fff">
-          <circle cx="8" cy="6" r="0.18" opacity="0.9" />
-          <circle cx="19" cy="14" r="0.12" opacity="0.6" />
-          <circle cx="31" cy="4" r="0.15" opacity="0.8" />
-          <circle cx="44" cy="11" r="0.1" opacity="0.5" />
-          <circle cx="57" cy="5" r="0.2" opacity="0.9" />
-          <circle cx="68" cy="15" r="0.12" opacity="0.6" />
-          <circle cx="79" cy="7" r="0.16" opacity="0.8" />
-          <circle cx="90" cy="12" r="0.14" opacity="0.7" />
-          <circle cx="95" cy="3" r="0.12" opacity="0.6" />
-        </g>
-      </svg>
-      <div class="sun"></div>
-    </div>
+  <!-- Photo (slowest layer) -->
+  <div class="layer photo-move" aria-hidden="true">
+    <Image
+      src={heroPhoto}
+      alt=""
+      widths={[640, 1024, 1440, 1920]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="photo size-full object-cover object-[50%_60%]"
+    />
   </div>
 
-  <!-- Floating shapes -->
+  <!-- Gradient wash: dark sky behind the title, fading to the white page -->
+  <div class="layer wash" aria-hidden="true"></div>
+
+  <!-- Geometric accents (mid layer) -->
   <div class="layer shapes-move" aria-hidden="true">
-    <div class="layer shapes">
-      <svg
-        class="shape s1"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#fff"
-        stroke-width="2"
-      >
-        <polygon points="50,8 94,88 6,88" />
-      </svg>
-      <svg
-        class="shape s2"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#fff"
-        stroke-width="2"
-      >
-        <circle cx="50" cy="50" r="44" />
-      </svg>
-      <svg
-        class="shape s3"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#fff"
-        stroke-width="2"
-      >
-        <polygon points="50,4 96,50 50,96 4,50" />
-      </svg>
-      <svg
-        class="shape s4"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#fff"
-        stroke-width="2"
-      >
-        <polygon points="50,10 92,84 8,84" />
-      </svg>
-      <svg
-        class="shape s5"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#fff"
-        stroke-width="2"
-      >
-        <circle cx="50" cy="50" r="40" />
-      </svg>
-    </div>
+    <svg class="shape s1" viewBox="0 0 100 100">
+      <polygon points="50,8 94,88 6,88" />
+    </svg>
+    <svg class="shape s2" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" />
+    </svg>
+    <svg class="shape s3" viewBox="0 0 100 100">
+      <polygon points="50,4 96,50 50,96 4,50" />
+    </svg>
   </div>
 
-  <!-- Ridges -->
-  <div class="layer ridge-move far-move" aria-hidden="true">
-    <div class="ridge far">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="grad-far" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#bfdbfe" />
-            <stop offset="1" stop-color="#93c5fd" />
-          </linearGradient>
-        </defs>
-        <polygon
-          fill="url(#grad-far)"
-          points="0,320 0,170 120,110 240,160 380,60 520,140 640,90 780,150 920,50 1080,130 1200,80 1320,140 1440,100 1440,320"
-        />
-        <g fill="#fff" opacity="0.22">
-          <polygon points="380,60 330,150 440,150" />
-          <polygon points="920,50 860,140 990,140" />
-          <polygon points="640,90 600,135 700,135" />
-          <polygon points="1200,80 1150,125 1260,125" />
-          <polygon points="120,110 80,150 170,150" />
-        </g>
-      </svg>
-    </div>
-  </div>
-  <div class="layer ridge-move mid-move" aria-hidden="true">
-    <div class="ridge mid">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="grad-mid" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#60a5fa" />
-            <stop offset="1" stop-color="#3b82f6" />
-          </linearGradient>
-        </defs>
-        <polygon
-          fill="url(#grad-mid)"
-          points="0,320 0,220 100,170 220,230 360,150 480,210 600,140 740,220 880,160 1020,230 1160,150 1300,210 1440,170 1440,320"
-        />
-        <g fill="#fff" opacity="0.16">
-          <polygon points="360,150 310,225 420,225" />
-          <polygon points="600,140 550,215 660,215" />
-          <polygon points="1160,150 1110,225 1220,225" />
-          <polygon points="880,160 840,220 930,220" />
-        </g>
-      </svg>
-    </div>
-  </div>
-  <div class="layer ridge-move near-move" aria-hidden="true">
-    <div class="ridge near">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="grad-near" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#1d4ed8" />
-            <stop offset="1" stop-color="#ffffff" />
-          </linearGradient>
-        </defs>
-        <polygon
-          fill="url(#grad-near)"
-          points="0,320 0,260 90,220 200,270 330,215 450,275 590,230 720,280 860,225 990,285 1130,235 1270,280 1440,240 1440,320"
-        />
-      </svg>
-    </div>
-  </div>
-
-  <!-- Title -->
-  <div class="layer title-move">
-    <div class="title relative z-10 mx-auto flex max-w-3xl flex-col items-center px-4 pt-[10svh] text-center text-white">
+  <!-- Title (fastest layer) -->
+  <div class="title-move relative z-10 flex w-full">
+    <div class="title mx-auto flex w-full max-w-5xl flex-col justify-center px-4 pt-24 pb-40 text-white sm:px-8">
+      <p class="font-mono text-xs tracking-[0.25em] text-blue-100 uppercase sm:text-sm">
+        Studio · Strategy · Build
+      </p>
       <h1
         id="hero-title"
-        class="text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+        class="mt-4 text-5xl leading-[0.95] font-light sm:text-7xl md:text-8xl"
       >
         {SITE_TITLE}
       </h1>
-      <p class="mt-5 max-w-xl text-lg text-blue-100 sm:text-xl">
-        Helping brands build fast, thoughtful websites. Replace this line with
-        your own.
+      <p class="mt-6 max-w-xl text-lg text-blue-50 sm:text-xl">
+        Helping brands build fast, <em class="font-serif">thoughtful</em>{" "}
+        websites. Replace this line with your own.
       </p>
-      <a
-        href="#intro"
-        class="mt-8 inline-flex flex-col items-center gap-1 font-mono text-sm text-blue-100 hover:text-white hover:underline"
-      >
-        Scroll
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          class="size-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a
+          href="/blog/"
+          class="rounded-full bg-white px-5 py-2.5 font-semibold text-dusk-900 transition hover:bg-blue-50"
         >
-          <path d="M12 5v14M6 13l6 6 6-6" />
-        </svg>
-      </a>
+          Read the blog
+        </a>
+        <a
+          href="/about/"
+          class="rounded-full border border-white/50 px-5 py-2.5 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+        >
+          About me
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -180,227 +76,132 @@ import { SITE_TITLE } from "../consts";
     position: absolute;
     inset: 0;
   }
-  .title-move {
-    z-index: 10;
+  .wash {
+    background:
+      linear-gradient(
+        to bottom,
+        rgb(11 30 70 / 0.85) 0%,
+        rgb(11 30 70 / 0.55) 35%,
+        rgb(29 78 216 / 0.1) 62%,
+        rgb(255 255 255 / 0) 72%,
+        #fff 100%
+      ),
+      radial-gradient(ellipse at 20% 30%, rgb(11 30 70 / 0.35), transparent 60%);
   }
-  .sky {
-    background: linear-gradient(
-      to bottom,
-      var(--color-dusk-900) 0%,
-      var(--color-dusk-700) 55%,
-      var(--color-dusk-400) 80%,
-      var(--color-dusk-100) 100%
-    );
+  .title {
+    text-shadow: 0 2px 24px rgb(11 30 70 / 0.45);
   }
-  /* extends the sky upward so parallax never exposes a gap above it */
-  .sky-move::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    height: 50vh;
-    background: var(--color-dusk-900);
-  }
-  .stars {
-    position: absolute;
-    inset: 0 0 50% 0;
-    width: 100%;
-    height: 50%;
-  }
-  .sun {
-    position: absolute;
-    left: 50%;
-    bottom: 12%;
-    width: min(40vw, 260px);
-    aspect-ratio: 1;
-    translate: -50% 0;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      #fff 0%,
-      #eff6ff 22%,
-      rgb(219 234 254 / 0.55) 40%,
-      rgb(147 197 253 / 0.2) 62%,
-      transparent 72%
-    );
-  }
+
   .shape {
     position: absolute;
-    opacity: 0.22;
-    animation: float var(--d, 28s) ease-in-out var(--delay, 0s) infinite
-      alternate;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.5;
+    opacity: 0.25;
+    animation: float var(--d) ease-in-out var(--delay, 0s) infinite alternate;
   }
   .s1 {
-    top: 12%;
-    left: 8%;
-    width: 64px;
-    --d: 26s;
+    top: 18%;
+    right: 12%;
+    width: 72px;
+    --d: 28s;
   }
   .s2 {
-    top: 20%;
-    right: 10%;
-    width: 90px;
-    --d: 34s;
-    --delay: -6s;
-    opacity: 0.18;
+    top: 52%;
+    right: 26%;
+    width: 120px;
+    --d: 36s;
+    --delay: -8s;
+    opacity: 0.15;
   }
   .s3 {
-    top: 46%;
-    left: 16%;
-    width: 48px;
-    --d: 22s;
-    --delay: -3s;
-    opacity: 0.28;
+    top: 30%;
+    right: 40%;
+    width: 40px;
+    --d: 24s;
+    --delay: -4s;
   }
-  .s4 {
-    top: 8%;
-    right: 30%;
-    width: 44px;
-    --d: 38s;
-    --delay: -12s;
-    opacity: 0.2;
-  }
-  .s5 {
-    top: 40%;
-    right: 18%;
-    width: 56px;
-    --d: 30s;
-    --delay: -9s;
-    opacity: 0.16;
-  }
-
-  .ridge {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    line-height: 0;
-  }
-  .ridge svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  .far {
-    height: clamp(220px, 34vw, 480px);
-  }
-  .mid {
-    height: clamp(180px, 26vw, 380px);
-  }
-  .near {
-    height: clamp(140px, 19vw, 280px);
-  }
-
   @keyframes float {
-    from {
-      transform: translate(0, 0) rotate(0deg);
-    }
     to {
       transform: translate(14px, -26px) rotate(40deg);
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .shape {
+      animation: none;
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
-    @keyframes rise {
+    @keyframes settle {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: scale(1.12);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1.04);
       }
     }
     @keyframes fade-up {
       from {
         opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(24px);
       }
     }
-    .far {
-      animation: rise 900ms ease-out 0ms both;
+    .photo {
+      animation: settle 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     }
-    .mid {
-      animation: rise 900ms ease-out 150ms both;
+    .title > * {
+      animation: fade-up 0.9s ease-out both;
     }
-    .near {
-      animation: rise 900ms ease-out 300ms both;
+    .title > :nth-child(1) {
+      animation-delay: 0.4s;
     }
-    .title {
-      animation: fade-up 900ms ease-out 500ms both;
+    .title > :nth-child(2) {
+      animation-delay: 0.55s;
+    }
+    .title > :nth-child(3) {
+      animation-delay: 0.7s;
+    }
+    .title > :nth-child(4) {
+      animation-delay: 0.85s;
     }
 
     @supports (animation-timeline: scroll()) {
-      @keyframes p-sky {
+      @keyframes p-photo {
         to {
-          transform: translateY(40vh);
+          transform: translateY(35vh);
         }
       }
       @keyframes p-shapes {
         to {
-          transform: translateY(30vh);
-        }
-      }
-      @keyframes p-far {
-        to {
-          transform: translateY(25vh);
-        }
-      }
-      @keyframes p-mid {
-        to {
           transform: translateY(15vh);
-        }
-      }
-      @keyframes p-near {
-        to {
-          transform: translateY(0);
         }
       }
       @keyframes p-title {
         to {
-          transform: translateY(35vh);
+          transform: translateY(-12vh);
           opacity: 0;
         }
       }
-      .sky-move,
+      .photo-move,
       .shapes-move,
-      .far-move,
-      .mid-move,
-      .near-move,
       .title-move {
-        animation-timing-function: linear;
-        animation-fill-mode: both;
+        animation: linear both;
         animation-timeline: scroll(root);
         animation-range: 0 100vh;
       }
-      .sky-move {
-        animation-name: p-sky;
+      .photo-move {
+        animation-name: p-photo;
       }
       .shapes-move {
         animation-name: p-shapes;
       }
-      .far-move {
-        animation-name: p-far;
-      }
-      .mid-move {
-        animation-name: p-mid;
-      }
-      .near-move {
-        animation-name: p-near;
-      }
       .title-move {
         animation-name: p-title;
       }
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .shape {
-      animation: none;
     }
   }
 </style>

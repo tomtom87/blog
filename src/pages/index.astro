@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import PostList from "../components/PostList.astro";
+import { Image } from "astro:assets";
+import introPhoto from "../assets/intro-kleinarl.jpg";
 import { getPublishedPosts } from "../lib/posts";
 
 const recent = (await getPublishedPosts()).slice(0, 5);
@@ -9,27 +11,43 @@ const recent = (await getPublishedPosts()).slice(0, 5);
 
 <BaseLayout>
   <Hero slot="hero" />
-  <section id="intro" class="reveal" aria-labelledby="intro-heading">
-    <h2 id="intro-heading" class="text-xl font-bold tracking-tight text-ink">
-      What I do
-    </h2>
-    <p class="mt-4 text-lg text-slate-700">
-      I run a small studio that helps brands plan, design and build fast,
-      thoughtful websites — from Shopify storefronts to content sites like this
-      one. Replace this with a few lines about who you help and how.
-    </p>
-    <h3 class="mt-8 text-base font-bold tracking-tight text-ink">Currently</h3>
-    <dl class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-[auto_1fr]">
-      <dt class="font-mono text-sm text-accent">building</dt>
-      <dd class="text-slate-700">A client storefront on Shopify</dd>
-      <dt class="font-mono text-sm text-accent">learning</dt>
-      <dd class="text-slate-700">Astro and CSS scroll-driven animations</dd>
-      <dt class="font-mono text-sm text-accent">reading</dt>
-      <dd class="text-slate-700">A book you'd recommend</dd>
-    </dl>
+  <section id="intro" aria-labelledby="intro-heading">
+    <figure class="relative z-10 -mt-32 sm:-mt-40">
+      <Image
+        src={introPhoto}
+        alt="Snow-covered peaks at dusk above a chalet with warm lit windows"
+        widths={[640, 1024, 1344]}
+        sizes="(min-width: 672px) 672px, 100vw"
+        class="aspect-[16/10] w-full rounded-2xl object-cover shadow-2xl shadow-blue-950/25"
+      />
+    </figure>
+    <div class="reveal">
+      <h2
+        id="intro-heading"
+        class="mt-12 text-3xl font-normal text-ink sm:text-4xl"
+      >
+        What I do
+      </h2>
+      <p class="mt-4 text-lg text-slate-700">
+        I run a small studio that helps brands plan, design and build fast,
+        thoughtful websites — from Shopify storefronts to content sites like
+        this one. Replace this with a few lines about who you help and how.
+      </p>
+      <h3 class="mt-8 text-base font-bold tracking-tight text-ink">
+        Currently
+      </h3>
+      <dl class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-[auto_1fr]">
+        <dt class="font-mono text-sm text-accent">building</dt>
+        <dd class="text-slate-700">A client storefront on Shopify</dd>
+        <dt class="font-mono text-sm text-accent">learning</dt>
+        <dd class="text-slate-700">Astro and CSS scroll-driven animations</dd>
+        <dt class="font-mono text-sm text-accent">reading</dt>
+        <dd class="text-slate-700">A book you'd recommend</dd>
+      </dl>
+    </div>
   </section>
-  <section class="mt-12" aria-labelledby="recent-posts">
-    <h2 id="recent-posts" class="text-xl font-bold tracking-tight text-ink">
+  <section class="mt-16" aria-labelledby="recent-posts">
+    <h2 id="recent-posts" class="text-3xl font-normal text-ink sm:text-4xl">
       Recent posts
     </h2>
     <div class="mt-6">
@@ -42,4 +60,28 @@ const recent = (await getPublishedPosts()).slice(0, 5);
       All posts →
     </a>
   </section>
+  <p class="mt-16 text-xs text-slate-500">
+    Photos:
+    <a
+      class="underline hover:text-accent"
+      href="https://commons.wikimedia.org/wiki/File:French_alps_at_Lake_Geneva_during_the_blue_hour_with_reflections.jpg"
+    >
+      French Alps at Lake Geneva
+    </a>{" "}
+    by Deralpinbergsteiger and
+    <a
+      class="underline hover:text-accent"
+      href="https://commons.wikimedia.org/wiki/File:Kleinarl_J%C3%A4gersee_20180209.jpg"
+    >
+      Kleinarl Jägersee
+    </a>{" "}
+    by Uoaei1, both
+    <a
+      class="underline hover:text-accent"
+      href="https://creativecommons.org/licenses/by-sa/4.0/"
+    >
+      CC BY-SA 4.0
+    </a>
+    , resized.
+  </p>
 </BaseLayout>
