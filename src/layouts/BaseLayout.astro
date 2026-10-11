@@ -5,10 +5,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 interface Props {
   title?: string;
   description?: string;
+  type?: "website" | "article";
 }
 
-const { title, description = SITE_DESCRIPTION } = Astro.props;
+const { title, description = SITE_DESCRIPTION, type = "website" } = Astro.props;
 const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">
@@ -23,6 +25,13 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
       title={SITE_TITLE}
       href="/rss.xml"
     />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta name="twitter:card" content="summary" />
     <title>{pageTitle}</title>
   </head>
   <body class="flex min-h-screen flex-col bg-zinc-950 text-zinc-100 antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-accent">
@@ -37,12 +46,18 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
         <a href="/" class="font-mono font-bold text-accent hover:underline">
           ~/{SITE_TITLE.toLowerCase().replaceAll(" ", "-")}
         </a>
-        <nav aria-label="Main">
+        <nav aria-label="Main" class="flex gap-4">
           <a
             href="/blog/"
             class="font-mono text-zinc-300 hover:text-accent hover:underline"
           >
             Blog
+          </a>
+          <a
+            href="/about/"
+            class="font-mono text-zinc-300 hover:text-accent hover:underline"
+          >
+            About
           </a>
         </nav>
       </div>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SOCIAL_LINKS } from "../consts";
+---
+
+<BaseLayout title="About" description="About Your Name.">
+  <h1 class="font-mono text-3xl font-bold sm:text-4xl">
+    <span class="text-accent">&gt;</span> About
+  </h1>
+  <div class="mt-8 space-y-4 text-zinc-300">
+    <p>
+      Hi, I'm Your Name. This is a placeholder bio: replace it with a short
+      introduction about who you are and what you do.
+    </p>
+    <p>
+      Here you can say a little about what you're working on, what you enjoy
+      writing about, and what you're interested in right now.
+    </p>
+  </div>
+  <h2 class="mt-10 font-mono text-xl font-bold">Contact</h2>
+  <ul class="mt-4 space-y-2">
+    {SOCIAL_LINKS.map(({ label, href }) => (
+      <li>
+        <a
+          href={href}
+          rel={href.startsWith("http") ? "me noopener" : undefined}
+          class="font-mono text-accent hover:underline"
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
