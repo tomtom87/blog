@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPublishedPosts } from "../../lib/posts";
 import TagList from "../../components/TagList.astro";
 import { formatDate } from "../../lib/date";
+import { readingTime } from "../../lib/readingTime";
 
 export const getStaticPaths = (async () => {
   const posts = await getPublishedPosts();
@@ -25,6 +26,7 @@ const { Content } = await render(post);
         <time datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
+        {` · ${readingTime(post.body ?? "")} min read`}
       </p>
       <TagList tags={post.data.tags} />
     </header>
