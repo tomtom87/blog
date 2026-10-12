@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Personal portfolio + blog for [YOUR NAME]: static Astro site, light blue editorial look, host not chosen yet.
+Personal portfolio + blog for [YOUR NAME]: static Astro site, dark cinematic look, host not chosen yet.
 
 ## Stack
 
@@ -40,7 +40,7 @@ Pages in scope: Home, About, Blog index, Post, Tag pages, RSS. Nothing else (no 
 
 ## Design
 
-Light page (white), navy ink text, one blue accent (#2563eb). Home hero is a full-screen blue-hour mountain photo (parallax) with the header laid over it. Fonts are self-hosted Google Fonts via Astro's Fonts API (`astro.config.mjs`): Fraunces for headings, Inter for body, JetBrains Mono only for meta (dates, tags, reading time). Photos live in `src/assets/`, rendered with `astro:assets` `<Image>`; CC-licensed photos need a credit on the page that uses them. Motion is CSS-only (keyframes, scroll-driven animations), no animation libraries, and all of it is disabled under prefers-reduced-motion.
+Dark, cinematic, motion-driven (direction A from UI UX Pro Max). Black page (#000), near-white text (#fafafa), secondary text #a1a1aa (never darker on black), rules #27272a. One accent: blue-hour blue #60a5fa, for post links and the focus ring. Tokens live in `src/styles/global.css`. Home hero is a full-screen blue-hour mountain photo with parallax, fading into the black page, with the header laid over it. Fonts are self-hosted Google Fonts via Astro's Fonts API (`astro.config.mjs`): Archivo (600/800, tight tracking) for headings, Space Grotesk for body and meta. Photos live in `src/assets/`, rendered with `astro:assets` `<Image>`; CC-licensed photos need a credit on the page that uses them. Motion is CSS-only (keyframes, scroll-driven animations for parallax and post entrances), no animation libraries, and all of it is disabled under prefers-reduced-motion.
 
 ## Rules
 
