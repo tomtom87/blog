@@ -35,40 +35,35 @@ const overHero = Astro.slots.has("hero");
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE_TITLE} />
     <meta name="twitter:card" content="summary" />
-    <Font cssVariable="--font-fraunces" preload />
-    <Font cssVariable="--font-inter" preload />
-    <Font cssVariable="--font-jetbrains" />
+    <Font cssVariable="--font-archivo" preload />
+    <Font cssVariable="--font-space-grotesk" preload />
     <title>{pageTitle}</title>
   </head>
-  <body class="relative flex min-h-screen flex-col bg-white text-ink antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-accent">
+  <body class="relative flex min-h-screen flex-col bg-paper font-sans text-fg antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-accent">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:text-accent focus:ring-2 focus:ring-accent"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-30 focus:bg-paper focus:px-3 focus:py-2 focus:text-accent focus:ring-2 focus:ring-accent"
     >
       Skip to content
     </a>
-    <header
-      class:list={[
-        overHero
-          ? "absolute inset-x-0 top-0 z-20 text-white"
-          : "border-b border-slate-200 text-ink",
-      ]}
-    >
+    <header class:list={[overHero ? "absolute inset-x-0 top-0 z-20" : ""]}>
       <div
         class:list={[
-          "mx-auto flex items-center justify-between gap-4 px-4 py-5",
-          overHero ? "max-w-5xl sm:px-8" : "max-w-2xl",
+          "mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-5 sm:px-8",
         ]}
       >
-        <a href="/" class="link-sweep font-serif text-xl font-semibold">
+        <a
+          href="/"
+          class="link-sweep font-display text-lg font-semibold tracking-tight"
+        >
           {SITE_TITLE}
         </a>
         <nav aria-label="Main" class="flex gap-5">
           <a
             href="/blog/"
             class:list={[
-              "link-sweep font-medium",
-              overHero ? "text-blue-50" : "text-slate-600 hover:text-accent",
+              "link-sweep py-2 font-medium",
+              "text-zinc-300 hover:text-fg",
             ]}
           >
             Blog
@@ -76,8 +71,8 @@ const overHero = Astro.slots.has("hero");
           <a
             href="/about/"
             class:list={[
-              "link-sweep font-medium",
-              overHero ? "text-blue-50" : "text-slate-600 hover:text-accent",
+              "link-sweep py-2 font-medium",
+              "text-zinc-300 hover:text-fg",
             ]}
           >
             About
@@ -87,12 +82,12 @@ const overHero = Astro.slots.has("hero");
     </header>
     <main id="main" class="flex-1">
       <slot name="hero" />
-      <div class="mx-auto w-full max-w-2xl px-4 py-10">
+      <div class="mx-auto w-full max-w-4xl px-4 py-12 sm:px-8 sm:py-20">
         <slot />
       </div>
     </main>
-    <footer class="border-t border-slate-200">
-      <p class="mx-auto max-w-2xl px-4 py-6 text-sm text-slate-500">
+    <footer class="border-t border-line">
+      <p class="mx-auto max-w-4xl px-4 py-8 text-sm text-muted sm:px-8">
         {`© ${new Date().getFullYear()} ${SITE_TITLE}`}
       </p>
     </footer>

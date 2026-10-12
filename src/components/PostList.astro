@@ -1,8 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import TagList from "./TagList.astro";
+import PostMeta from "./PostMeta.astro";
 import { formatDate } from "../lib/date";
-import { readingTime } from "../lib/readingTime";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
@@ -11,25 +10,20 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<ul class="space-y-6">
+<ul class="border-t border-line">
   {posts.map((post) => (
-    <li class="reveal">
-      <div class="rounded-xl border border-slate-200 bg-white p-5 transition duration-200 hover:border-accent/40 hover:shadow-lg hover:shadow-blue-900/5 motion-safe:hover:-translate-y-0.5">
-        <a
-          href={`/blog/${post.id}/`}
-          class="link-sweep font-serif text-xl font-medium text-ink hover:text-accent"
-        >
-          {post.data.title}
-        </a>
-        <p class="mt-1 font-mono text-sm text-slate-500">
-          <time datetime={post.data.date.toISOString()}>
-            {formatDate(post.data.date)}
-          </time>
-          {` · ${readingTime(post.body ?? "")} min read`}
-        </p>
-        <TagList tags={post.data.tags} />
-        <p class="mt-2 text-slate-700">{post.data.description}</p>
-      </div>
+    <li class="post-row grid gap-2 border-b border-line py-8">
+      <time datetime={post.data.date.toISOString()} class="text-sm text-muted">
+        {formatDate(post.data.date)}
+      </time>
+      <a
+        href={`/blog/${post.id}/`}
+        class="post-title font-display text-3xl leading-[1.05] font-semibold tracking-[-0.03em] sm:text-4xl"
+      >
+        {post.data.title}
+      </a>
+      <p class="max-w-[52ch] text-zinc-400">{post.data.description}</p>
+      <PostMeta post={post} class="mt-1" />
     </li>
   ))}
 </ul>

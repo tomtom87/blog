@@ -9,16 +9,10 @@ const { tags } = Astro.props;
 ---
 
 {tags.length > 0 && (
-  <ul
-    aria-label="Tags"
-    class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-slate-500"
-  >
+  <ul aria-label="Tags" class="flex flex-wrap gap-x-3 gap-y-1">
     {tags.map((tag) => (
       <li>
-        <a
-          href={`/tags/${tagSlug(tag)}/`}
-          class="hover:text-accent hover:underline"
-        >
+        <a href={`/tags/${tagSlug(tag)}/`} class="link-sweep hover:text-fg">
           #{tagSlug(tag)}
         </a>
       </li>

@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
 import { SOCIAL_LINKS } from "../consts";
 ---
 
 <BaseLayout title="About" description="About Your Name.">
-  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">About</h1>
-  <div class="mt-8 space-y-4 text-slate-700">
+  <PageHeader title="About" />
+  <div class="mt-10 max-w-[60ch] space-y-4 text-lg text-zinc-300">
     <p>
       Hi, I'm Your Name. This is a placeholder bio: replace it with a short
       introduction about who you are and what you do.
@@ -15,14 +16,14 @@ import { SOCIAL_LINKS } from "../consts";
       writing about, and what you're interested in right now.
     </p>
   </div>
-  <h2 class="mt-10 text-xl font-bold tracking-tight text-ink">Contact</h2>
-  <ul class="mt-4 space-y-2">
+  <h2 class="mt-16 text-3xl sm:text-4xl">Contact</h2>
+  <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
     {SOCIAL_LINKS.map(({ label, href }) => (
       <li>
         <a
           href={href}
           rel={href.startsWith("http") ? "me noopener" : undefined}
-          class="font-medium text-accent hover:underline"
+          class="link-sweep font-medium"
         >
           {label}
         </a>

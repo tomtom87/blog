@@ -47,3 +47,8 @@ test("has canonical and Open Graph meta", async () => {
   expect(page).toMatch(/<meta property="og:url" content="https?:\/\/[^"]+\/"/);
   expect(page).toContain('<meta property="og:type" content="website"');
 });
+
+test("loads the Archivo and Space Grotesk fonts", () => {
+  expect(html).toContain("--font-archivo");
+  expect(html).toContain("--font-space-grotesk");
+});

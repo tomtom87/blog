@@ -2,64 +2,128 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-accent: #2563eb;
-  --color-ink: #0f172a;
-  --color-dusk-900: #0b1e46;
-  --color-dusk-700: #1d4ed8;
-  --color-dusk-400: #60a5fa;
-  --color-dusk-100: #dbeafe;
+  --color-paper: #000000;
+  --color-fg: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-line: #27272a;
+  --color-surface: #0c0c0c;
+  --color-accent: #60a5fa;
 }
 
 /* Self-hosted Google Fonts from astro.config.mjs */
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-fraunces);
-  --font-mono: var(--font-jetbrains);
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-archivo);
 }
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
   h1,
   h2,
   h3 {
-    font-family: var(--font-serif);
-    font-optical-sizing: auto;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  h1 {
+    font-weight: 800;
+    letter-spacing: -0.045em;
   }
 }
 
 .prose {
-  --tw-prose-links: var(--color-accent);
-  --tw-prose-headings: var(--color-ink);
+  --tw-prose-invert-links: var(--color-accent);
+  --tw-prose-invert-body: #d4d4d8;
+  --tw-prose-invert-headings: var(--color-fg);
+  --tw-prose-invert-pre-bg: var(--color-surface);
+}
+.prose :where(pre) {
+  border: 1px solid var(--color-line);
+}
+.prose :where(code):not(:where(pre code)) {
+  background: var(--color-line);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.3em;
+  font-weight: 400;
+}
+.prose :where(code):not(:where(pre code))::before,
+.prose :where(code):not(:where(pre code))::after {
+  content: none;
 }
 
 .link-sweep {
   background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 2px;
+  background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.25s ease;
 }
 .link-sweep:hover,
 .link-sweep:focus-visible {
-  background-size: 100% 2px;
+  background-size: 100% 1px;
 }
 
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+/* Post rows: a line draws across the top and the title slides on hover. */
+.post-row {
+  position: relative;
 }
+.post-row::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--color-fg);
+}
+.post-row:hover::before,
+.post-row:focus-within::before {
+  width: 100%;
+}
+.post-row:hover .post-title,
+.post-row:focus-within .post-title {
+  transform: translateX(10px);
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  .link-sweep {
+    transition: background-size 0.25s ease;
+  }
+  .post-row::before {
+    transition: width 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .post-title {
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
   @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal linear both;
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+    }
+    .post-row {
+      animation: rise linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 30%;
+      animation-range: entry 0% cover 25%;
+    }
+
+    /* Parallax: the image drifts slower than its frame while it passes. */
+    @keyframes drift {
+      from {
+        transform: translateY(-8%);
+      }
+      to {
+        transform: translateY(8%);
+      }
+    }
+    .parallax-img {
+      scale: 1.2;
+      animation: drift linear both;
+      animation-timeline: view();
     }
   }
 }

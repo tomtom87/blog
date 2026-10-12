@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TagList from "./TagList.astro";
+import { readingTime } from "../lib/readingTime";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  class?: string;
+}
+
+const { post, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex flex-wrap items-baseline gap-x-5 gap-y-1 text-sm text-muted",
+    className,
+  ]}
+>
+  <slot />
+  <span>{readingTime(post.body ?? "")} min read</span>
+  <TagList tags={post.data.tags} />
+</div>

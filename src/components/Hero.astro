@@ -6,9 +6,9 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
 
 <section
   aria-labelledby="hero-title"
-  class="hero relative isolate flex min-h-svh overflow-hidden bg-dusk-900"
+  class="hero relative isolate flex min-h-svh overflow-hidden bg-paper"
 >
-  <!-- Photo (slowest layer) -->
+  <!-- Photo (slow layer) -->
   <div class="layer photo-move" aria-hidden="true">
     <Image
       src={heroPhoto}
@@ -21,48 +21,32 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
     />
   </div>
 
-  <!-- Gradient wash: dark sky behind the title, fading to the white page -->
+  <!-- Gradient wash: keeps the title readable, fades into the black page -->
   <div class="layer wash" aria-hidden="true"></div>
 
-  <!-- Geometric accents (mid layer) -->
-  <div class="layer shapes-move" aria-hidden="true">
-    <svg class="shape s1" viewBox="0 0 100 100">
-      <polygon points="50,8 94,88 6,88" />
-    </svg>
-    <svg class="shape s2" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="46" />
-    </svg>
-    <svg class="shape s3" viewBox="0 0 100 100">
-      <polygon points="50,4 96,50 50,96 4,50" />
-    </svg>
-  </div>
-
-  <!-- Title (fastest layer) -->
+  <!-- Title (fast layer) -->
   <div class="title-move relative z-10 flex w-full">
-    <div class="title mx-auto flex w-full max-w-5xl flex-col justify-center px-4 pt-24 pb-40 text-white sm:px-8">
-      <p class="font-mono text-xs tracking-[0.25em] text-blue-100 uppercase sm:text-sm">
-        Studio · Strategy · Build
-      </p>
+    <div class="title mx-auto flex w-full max-w-4xl flex-col justify-end px-4 pt-32 pb-24 sm:px-8 sm:pb-32">
       <h1
         id="hero-title"
-        class="mt-4 text-5xl leading-[0.95] font-light sm:text-7xl md:text-8xl"
+        class="text-6xl leading-[0.88] sm:text-8xl md:text-9xl"
       >
         {SITE_TITLE}
       </h1>
-      <p class="mt-6 max-w-xl text-lg text-blue-50 sm:text-xl">
-        Helping brands build fast, <em class="font-serif">thoughtful</em>{" "}
-        websites. Replace this line with your own.
+      <p class="mt-6 max-w-[34ch] text-lg text-zinc-300 sm:text-xl">
+        I help brands plan, design and build fast websites, and write about how
+        it's done. Replace this line with your own.
       </p>
       <div class="mt-10 flex flex-wrap gap-3">
         <a
           href="/blog/"
-          class="rounded-full bg-white px-5 py-2.5 font-semibold text-dusk-900 transition hover:bg-blue-50"
+          class="rounded-full bg-fg px-5 py-3 font-medium text-paper transition-colors hover:bg-zinc-300"
         >
           Read the blog
         </a>
         <a
           href="/about/"
-          class="rounded-full border border-white/50 px-5 py-2.5 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+          class="rounded-full border border-zinc-600 px-5 py-3 font-medium backdrop-blur-sm transition-colors hover:bg-white/10"
         >
           About me
         </a>
@@ -77,60 +61,16 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
     inset: 0;
   }
   .wash {
-    background:
-      linear-gradient(
-        to bottom,
-        rgb(11 30 70 / 0.85) 0%,
-        rgb(11 30 70 / 0.55) 35%,
-        rgb(29 78 216 / 0.1) 62%,
-        rgb(255 255 255 / 0) 72%,
-        #fff 100%
-      ),
-      radial-gradient(ellipse at 20% 30%, rgb(11 30 70 / 0.35), transparent 60%);
+    background: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.55) 0%,
+      rgb(0 0 0 / 0.1) 40%,
+      rgb(0 0 0 / 0.45) 75%,
+      #000 100%
+    );
   }
   .title {
-    text-shadow: 0 2px 24px rgb(11 30 70 / 0.45);
-  }
-
-  .shape {
-    position: absolute;
-    fill: none;
-    stroke: #fff;
-    stroke-width: 1.5;
-    opacity: 0.25;
-    animation: float var(--d) ease-in-out var(--delay, 0s) infinite alternate;
-  }
-  .s1 {
-    top: 18%;
-    right: 12%;
-    width: 72px;
-    --d: 28s;
-  }
-  .s2 {
-    top: 52%;
-    right: 26%;
-    width: 120px;
-    --d: 36s;
-    --delay: -8s;
-    opacity: 0.15;
-  }
-  .s3 {
-    top: 30%;
-    right: 40%;
-    width: 40px;
-    --d: 24s;
-    --delay: -4s;
-  }
-  @keyframes float {
-    to {
-      transform: translate(14px, -26px) rotate(40deg);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .shape {
-      animation: none;
-    }
+    text-shadow: 0 2px 24px rgb(0 0 0 / 0.4);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -160,24 +100,16 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
       animation-delay: 0.4s;
     }
     .title > :nth-child(2) {
-      animation-delay: 0.55s;
+      animation-delay: 0.5s;
     }
     .title > :nth-child(3) {
-      animation-delay: 0.7s;
-    }
-    .title > :nth-child(4) {
-      animation-delay: 0.85s;
+      animation-delay: 0.65s;
     }
 
     @supports (animation-timeline: scroll()) {
       @keyframes p-photo {
         to {
           transform: translateY(35vh);
-        }
-      }
-      @keyframes p-shapes {
-        to {
-          transform: translateY(15vh);
         }
       }
       @keyframes p-title {
@@ -187,7 +119,6 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
         }
       }
       .photo-move,
-      .shapes-move,
       .title-move {
         animation: linear both;
         animation-timeline: scroll(root);
@@ -195,9 +126,6 @@ import heroPhoto from "../assets/hero-lake-geneva.jpg";
       }
       .photo-move {
         animation-name: p-photo;
-      }
-      .shapes-move {
-        animation-name: p-shapes;
       }
       .title-move {
         animation-name: p-title;

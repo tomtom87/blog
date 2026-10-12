@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import PostList from "../../components/PostList.astro";
 import { getPublishedPosts } from "../../lib/posts";
 import { postsByTag, uniqueTags } from "../../lib/tags";
@@ -21,10 +22,8 @@ const { posts } = Astro.props;
   title={`Posts tagged "${tag}"`}
   description={`Posts tagged ${tag}.`}
 >
-  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-    Tagged: {tag}
-  </h1>
-  <div class="mt-8">
+  <PageHeader title={`#${tag}`} />
+  <div class="mt-10">
     <PostList posts={posts} />
   </div>
 </BaseLayout>
