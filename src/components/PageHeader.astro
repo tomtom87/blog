@@ -1,0 +1,13 @@
+---
+// The one h1 on inner pages; optional meta (dates, tags) goes in the slot.
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<header>
+  <h1 class="text-5xl leading-[0.92] sm:text-7xl">{title}</h1>
+  <slot />
+</header>

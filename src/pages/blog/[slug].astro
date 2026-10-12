@@ -3,9 +3,9 @@ import type { GetStaticPaths } from "astro";
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPublishedPosts } from "../../lib/posts";
-import TagList from "../../components/TagList.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import PostMeta from "../../components/PostMeta.astro";
 import { formatDate } from "../../lib/date";
-import { readingTime } from "../../lib/readingTime";
 
 export const getStaticPaths = (async () => {
   const posts = await getPublishedPosts();
@@ -22,19 +22,14 @@ const { Content } = await render(post);
   type="article"
 >
   <article>
-    <header>
-      <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-        {post.data.title}
-      </h1>
-      <p class="mt-2 font-mono text-sm text-slate-500">
+    <PageHeader title={post.data.title}>
+      <PostMeta post={post} class="mt-5">
         <time datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
-        {` · ${readingTime(post.body ?? "")} min read`}
-      </p>
-      <TagList tags={post.data.tags} />
-    </header>
-    <div class="prose mt-8 max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-ink">
+      </PostMeta>
+    </PageHeader>
+    <div class="prose prose-lg prose-invert mt-10 prose-a:underline-offset-4">
       <Content />
     </div>
   </article>

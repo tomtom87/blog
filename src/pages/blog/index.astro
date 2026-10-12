@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import PostList from "../../components/PostList.astro";
 import { getPublishedPosts } from "../../lib/posts";
 
@@ -7,8 +8,8 @@ const posts = await getPublishedPosts();
 ---
 
 <BaseLayout title="Blog" description="All posts.">
-  <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">Blog</h1>
-  <div class="mt-8">
+  <PageHeader title="Blog" />
+  <div class="mt-10">
     <PostList posts={posts} />
   </div>
 </BaseLayout>
