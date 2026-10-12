@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Personal portfolio + blog for [YOUR NAME]: static Astro site, dark/techy look, host not chosen yet.
+Personal portfolio + blog for [YOUR NAME]: static Astro site, light blue editorial look, host not chosen yet.
 
 ## Stack
 
