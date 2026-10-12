@@ -1,0 +1,11 @@
+{
+  "name": "blog-writer",
+  "version": "1.0.0",
+  "description": "Find timely blog post ideas with Exa web search, then turn one into a post that matches your blog's format and voice.",
+  "author": {
+    "name": "Tom Whitbread",
+    "url": "https://github.com/tomtom87"
+  },
+  "repository": "https://github.com/tomtom87/blog",
+  "keywords": ["blog", "writing", "exa", "research"]
+}

@@ -10,7 +10,7 @@ A static portfolio and blog built with [Astro](https://astro.build) and [Tailwin
 - **Self-hosted Google Fonts** (Fraunces, Inter, JetBrains Mono) via Astro's built-in Fonts API.
 - **Optimized images** via `astro:assets`, served as responsive WebP.
 - **Tests.** Vitest covers the logic: sorting, draft filtering, tags, reading time, RSS.
-- **A Claude Code skill for writing posts:** `/new-post`.
+- **A Claude Code plugin for writing posts:** `/post-ideas` finds timely topics with [Exa](https://exa.ai) search, `/new-post` writes them up. It works on any blog, not just this one.
 
 ## Getting started
 
@@ -46,17 +46,23 @@ Then open http://localhost:4321.
 
 ## Writing posts
 
-**With Claude Code:** run `/new-post` followed by a title, rough notes or a full draft:
+**With Claude Code:** this repo ships the [`blog-writer` plugin](plugins/blog-writer/), and `.claude/settings.json` turns it on when you trust the folder. It has two skills:
 
 ```text
+/post-ideas
 /new-post why I switched to Astro
 ```
 
-The skill lives in [`.claude/skills/new-post/SKILL.md`](.claude/skills/new-post/SKILL.md). It:
+- `/post-ideas` reads your existing posts, searches the last month of the web with Exa, and pitches 5 ideas with real sources. Pick one and it hands off to `/new-post`.
+- `/new-post` takes a title, rough notes or a full draft, learns the blog's front matter and voice, writes the file, and runs the build to check it.
 
-- asks only for what's missing (description, tags, draft or published)
-- creates the file with valid front matter and handles images
-- runs the build to check it
+**Use it on your own blog:** you don't need this repo. In Claude Code:
+
+```text
+/plugin install blog-writer --marketplace tomtom87/blog
+```
+
+See the [plugin README](plugins/blog-writer/README.md) for details.
 
 **By hand:** add a Markdown file to `src/content/blog/`. The filename becomes the URL.
 
@@ -86,7 +92,7 @@ src/
   lib/               pure TS logic + Vitest tests
   pages/             home, about, blog, tags, rss.xml
   styles/global.css  theme tokens and shared CSS
-.claude/skills/      the /new-post skill
+plugins/blog-writer/ the /post-ideas + /new-post plugin (with Exa MCP)
 CLAUDE.md            project rules Claude follows
 PROMPTS.md           every prompt used to build this
 ```
