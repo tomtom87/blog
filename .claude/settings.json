@@ -12,5 +12,16 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "blog-writer@tomtom87-blog": true
+  },
+  "extraKnownMarketplaces": {
+    "tomtom87-blog": {
+      "source": {
+        "source": "github",
+        "repo": "tomtom87/blog"
+      }
+    }
   }
 }
