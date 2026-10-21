@@ -5,6 +5,7 @@ import Home from "../pages/index.astro";
 import BlogIndex from "../pages/blog/index.astro";
 import Post from "../pages/blog/[slug].astro";
 import TagPage from "../pages/tags/[tag].astro";
+import Releases from "../pages/releases.astro";
 import { getPublishedPosts } from "../lib/posts";
 import { postsByTag } from "../lib/tags";
 
@@ -46,6 +47,11 @@ test("home photo credit keeps its spaces", async () => {
   expect(text).toContain("Photos: French Alps at Lake Geneva");
   expect(text).toContain("and Kleinarl Jägersee");
   expect(text).toContain("both CC BY-SA 4.0");
+});
+
+test("releases page has one h1", async () => {
+  const html = await container.renderToString(Releases);
+  expect(h1Count(html)).toBe(1);
 });
 
 test("post page has one h1, a dated time and article og:type", async () => {

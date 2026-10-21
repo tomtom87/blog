@@ -4,9 +4,13 @@ import Hero from "../components/Hero.astro";
 import PostList from "../components/PostList.astro";
 import { Image } from "astro:assets";
 import introPhoto from "../assets/intro-kleinarl.jpg";
+import ReleaseList from "../components/ReleaseList.astro";
+import { getCollection } from "astro:content";
 import { getPublishedPosts } from "../lib/posts";
+import { byNewest } from "../lib/releases";
 
 const recent = (await getPublishedPosts()).slice(0, 5);
+const releases = byNewest(await getCollection("releases")).slice(0, 5);
 ---
 
 <BaseLayout>
@@ -56,6 +60,20 @@ const recent = (await getPublishedPosts()).slice(0, 5);
     </div>
     <a href="/blog/" class="link-sweep mt-10 inline-block font-medium">
       All posts
+    </a>
+  </section>
+  <section class="mt-24" aria-labelledby="recent-releases">
+    <h2
+      id="recent-releases"
+      class="text-sm font-normal tracking-normal text-muted"
+    >
+      Recent releases
+    </h2>
+    <div class="mt-6">
+      <ReleaseList releases={releases} />
+    </div>
+    <a href="/releases/" class="link-sweep mt-10 inline-block font-medium">
+      All releases
     </a>
   </section>
   <p class="mt-24 text-xs text-muted">

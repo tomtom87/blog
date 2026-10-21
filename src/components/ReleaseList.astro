@@ -1,0 +1,41 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import { formatDate } from "../lib/date";
+
+interface Props {
+  releases: CollectionEntry<"releases">[];
+  showNotes?: boolean;
+}
+
+const { releases, showNotes = false } = Astro.props;
+const rows = await Promise.all(
+  releases.map(async (release) => ({
+    release,
+    Notes: showNotes ? (await render(release)).Content : null,
+  })),
+);
+---
+
+<ul class="border-t border-line">
+  {rows.map(({ release, Notes }) => (
+    <li class="post-row grid gap-2 border-b border-line py-8">
+      <time
+        datetime={release.data.date.toISOString()}
+        class="text-sm text-muted"
+      >
+        {formatDate(release.data.date)}
+      </time>
+      <a
+        href={release.data.url}
+        class="post-title font-display text-3xl leading-[1.05] font-semibold tracking-[-0.03em] sm:text-4xl"
+      >
+        {release.data.title}
+      </a>
+      {Notes && (
+        <div class="prose prose-invert mt-3 max-w-none min-w-0 [overflow-wrap:anywhere] prose-a:underline-offset-4">
+          <Notes />
+        </div>
+      )}
+    </li>
+  ))}
+</ul>
