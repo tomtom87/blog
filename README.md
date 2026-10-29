@@ -80,6 +80,10 @@ Post body. Use ## for headings.
 
 Post images go in `src/assets/blog/<post-slug>/` and are referenced relatively: `![Alt text](../../assets/blog/<post-slug>/photo.jpg)`.
 
+## Hooks
+
+The repo ships Claude Code hooks for notifications, quality gates, guardrails and context injection, plus a read-only code-reviewer subagent (episode 3). **[HOOKS.md](HOOKS.md)** explains each one with copy-paste scripts and a prompt for setting them up in your own project. In this repo, run `/setup-hooks` and Claude walks you through them.
+
 ## Project structure
 
 ```text

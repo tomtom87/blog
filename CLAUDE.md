@@ -16,7 +16,7 @@ Astro dev-server and docs pointers: @AGENTS.md
 
 ## Structure
 
-- `src/pages/`: routes: `index.astro` (home), `about.astro`, `blog/index.astro`, `blog/[slug].astro`, `tags/[tag].astro`, `rss.xml.ts`
+- `src/pages/`: routes: `index.astro` (home), `about.astro`, `blog/index.astro`, `blog/[slug].astro`, `tags/[tag].astro`, `releases.astro` (Portage releases from GitHub, fetched at build), `rss.xml.ts`
 - `src/layouts/`: page shells (`BaseLayout.astro`, `PostLayout.astro`)
 - `src/components/`: reusable UI
 - `src/content/blog/`: Markdown posts (`.md`)
@@ -36,7 +36,7 @@ draft: false # boolean, default false
 
 ## Scope
 
-Pages in scope: Home, About, Blog index, Post, Tag pages, RSS. Nothing else (no projects page, search, comments, analytics, dark-mode toggle) unless asked.
+Pages in scope: Home, About, Blog index, Post, Tag pages, Releases, RSS. Nothing else (no projects page, search, comments, analytics, dark-mode toggle) unless asked.
 
 ## Design
 

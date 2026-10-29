@@ -1,27 +1,79 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/briefing.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|Bash|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard.sh"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run-tests.sh",
-            "timeout": 120
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/post-edit.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check.sh",
+            "timeout": 180
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/sound.sh Glass \"Needs your attention\""
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/sound.sh Pop \"Subagent finished\""
           }
         ]
       }
     ]
   },
-  "enabledPlugins": {
-    "blog-writer@tomtom87-blog": true
+  "permissions": {
+    "deny": ["Read(./.env*)", "Edit(./.env*)", "Write(./.env*)"],
+    "ask": ["Bash(npm install *)", "Bash(npm i *)"]
   },
+  "enabledPlugins": { "blog-writer@tomtom87-blog": true },
   "extraKnownMarketplaces": {
     "tomtom87-blog": {
-      "source": {
-        "source": "github",
-        "repo": "tomtom87/blog"
-      }
+      "source": { "source": "github", "repo": "tomtom87/blog" }
     }
   }
 }

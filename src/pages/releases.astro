@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ReleaseList from "../components/ReleaseList.astro";
+import { RELEASES_REPO } from "../consts";
+import { byNewest } from "../lib/releases";
+
+const releases = byNewest(await getCollection("releases"));
+---
+
+<BaseLayout
+  title="Releases"
+  description={`Release notes for ${RELEASES_REPO}.`}
+>
+  <PageHeader title="Releases">
+    <p class="mt-5 text-zinc-400">
+      Release notes for{" "}
+      <a
+        class="underline hover:text-fg"
+        href={`https://github.com/${RELEASES_REPO}`}
+      >
+        {RELEASES_REPO}
+      </a>
+      , pulled from GitHub.
+    </p>
+  </PageHeader>
+  <div class="mt-10">
+    <ReleaseList releases={releases} showNotes />
+  </div>
+</BaseLayout>
